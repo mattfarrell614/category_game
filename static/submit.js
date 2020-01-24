@@ -12,6 +12,18 @@ $( document ).ready(function() {
 			}
 			$('#player1tries').text(data.playerOneTries);
 			$('#player2tries').text(data.playerOneTries);
+			if (data.playerOnesTurn == true){
+				console.log("FIRST")
+				$("#player1country").css({"background-color": "green"});
+				$("#player2country").css({"background-color": "red"});
+			}
+			if (data.playerTwosTurn == true){
+				console.log("SECOND")
+				$("#player2country").css({"background-color": "green"});
+				$("#player1country").css({"background-color": "red"});
+			}
+			console.log("Initial get: " + data.playerOnesTurn)
+			console.log("Initial get: " + data.playerTwosTurn)
           }
 	});
 
@@ -34,11 +46,11 @@ $( document ).ready(function() {
 						console.log("Player one lost")
 					}
 
-					if (!response.error) {
+					if (response.playerOnePick) {
 						$("#player1list").append(new Option(response.playerOnePick));
 						$(".playerform")[0].reset();
 										}
-					else {
+					if (response.error) {
 						$("#notCoutryOne").show()
 						setTimeout(function(){
 						$("#notCoutryOne").hide();
@@ -46,9 +58,23 @@ $( document ).ready(function() {
 						$(".playerform")[0].reset();
 						$('#player1tries').text(response.playerOneTries);
 										}
-
-				}
-			})
+					if (response.playerTwosTurn == "true"){
+						$("#player1country").css({"background-color": "red"});
+						$("#player2country").css({"background-color": "green"});
+					}
+					else{
+						$("#player2country").css({"background-color": "green"});
+						$("#player1country").css({"background-color": "red"});
+					}
+					if (response.playerOnesTurn == "false"){
+						$("#notOneTurn").show()
+						setTimeout(function(){
+						$("#notOneTurn").hide();
+						}, 1000);
+						$(".playerform")[0].reset();
+					}
+			}
+		})
 			event.preventDefault();
 		});
 	});
@@ -69,11 +95,11 @@ $( document ).ready(function() {
 						$("#playerTwoLost").show()
 						console.log("Player two lost")
 					}
-					if (!response.error) {
-						$("#player2list").append(new Option(response.playerOnePick));
+					if (response.playerTwoPick) {
+						$("#player2list").append(new Option(response.playerTwoPick));
 						$(".playerform")[1].reset();
 										}
-					else {
+					if (response.error) {
 						$("#notCoutryTwo").show()
 						setTimeout(function(){
 						$("#notCoutryTwo").hide();
@@ -81,6 +107,21 @@ $( document ).ready(function() {
 						$(".playerform")[1].reset();
 						$('#player2tries').text(response.playerOneTries);
 										}
+					if (response.playerOnesTurn == "true"){
+						$("#player1country").css({"background-color": "green"});
+						$("#player2country").css({"background-color": "red"});
+					}
+					else{
+						$("#player2country").css({"background-color": "red"});
+						$("#player1country").css({"background-color": "green"});
+					}
+					if (response.playerTwosTurn == "false"){
+						$("#notTwoTurn").show()
+						setTimeout(function(){
+						$("#notTwoTurn").hide();
+						}, 1000);
+						$(".playerform")[1].reset();
+					}
 				}
 			})
 			event.preventDefault();
