@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Category Game</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+    <link rel="stylesheet" href="../static/newstyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap" rel="stylesheet">
+    <script src="{{ url_for('static', filename='submit.js') }}"></script>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+</head>
+<body>
+  <div id="wrapper">
+    <div>
+      <h1>Category Game</h1>
+    </div>
+    <div id="player1" class="playerdiv">
+      <h3>Matthew</h3>
+      <form action="#" id="player1form" class="playerform">
+        <p>Tries Left - </p><p id="player1tries"></p>
+        <input type="text" id="player1country" name="player1country">
+        <div id="notCoutryOne" class="hidden"><p>Not a country or already selected :(</p></div>
+        <div id="notOneTurn" class="hidden"><p>Not your turn!</p></div>
+        <button id="player1button" type="submit">Submit</button>
+        <h3>Countries Guessed!</h3>
+        <div class="bloc">
+        <select size="10" id="player1list"></select>
+        </div>
+      </form>
+    </div>
+    <div id="player2" class="playerdiv">
+      <h3>Ella</h3>
+      <form action="#" id="player2form" class="playerform">
+        <p>Tries Left - </p><p id="player2tries"></p>
+        <input type="text" id="player2country" name="player2country">
+        <div id="notCoutryTwo" class="hidden"><p>Not a country or already selected :(</p></div>
+        <div id="notTwoTurn" class="hidden"><p>Not your turn!</p></div>
+        <button id="player2button" type="submit">Submit</button>
+        <h3>Countries Guessed!</h3>
+        <div class="bloc">
+        <select size="10" id="player2list"></select>
+        </div>
+      </form>
+    </div>
+    <a href="reset"><button id="reset">Reset Game</button></a>
+  </div>
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <div id="playerOneLost" class="hidden"><p>Player two is the winner!</p></div>
+      <div id="playerTwoLost" class="hidden"><p>Player one is the winner!</p></div>
+      <a href="reset"><button id="reset">Reset Game</button></a>
+    </div>
+  </div>
+</body>
+</html>

@@ -81,3 +81,16 @@ html, body {
     text-decoration: none;
     cursor: pointer;
   }
+
+  /* #player1 {
+    background-color: blue;
+  } */
+
+  #wrapper {
+    width: 960px;
+  }
+
+  .playerdiv {
+    float: left;
+    width: 50%;
+  }

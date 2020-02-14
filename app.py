@@ -16,6 +16,7 @@ app.secret_key = "2fsnv987bw4%VFGNB@#$5EFBSD@#42wertgvsdfbv"
 @app.route("/")
 def index():
     if "player_one_picks" in session:
+        print(session["player_one_tries"],session["player_two_tries"])
         return render_template('game.html')
     else:
         session["player_one_picks"] = []

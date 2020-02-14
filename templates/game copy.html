@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Category Game</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='newstyle.css') }}">
+    <script src="{{ url_for('static', filename='submit.js') }}"></script>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+</head>
+<body>
+  <div id="wrapper">
+  <div id="player1" class="playerdiv">
+  <form action="#" id="player1form" class="playerform">
+  <label for="player1country">Player 1</label><p>Tries Left</p><p id="player1tries"></p>
+  <input type="text" id="player1country" name="player1country">
+  <div id="notCoutryOne" class="hidden"><p>Not a country or already selected :(</p></div>
+  <div id="notOneTurn" class="hidden"><p>Not your turn!</p></div>
+  <button id="player1button" type="submit">Submit</button>
+  <select id="player1list"></select>
+  </form>
+  </div>
+  <div id="player2" class="playerdiv">
+  <form action="#" id="player2form" class="playerform">
+  <label for="player2country">Player 2</label><p>Tries Left</p><p id="player2tries"></p>
+  <input type="text" id="player2country" name="player2country">
+  <div id="notCoutryTwo" class="hidden"><p>Not a country or already selected :(</p></div>
+  <div id="notTwoTurn" class="hidden"><p>Not your turn!</p></div>
+  <button id="player2button" type="submit">Submit</button>
+  <select id="player2list"></select>
+  </form>
+  <a href="reset"><button id="reset">Reset Game</button></a>
+  </div>
+
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div id="playerOneLost" class="hidden"><p>Player two is the winner!</p></div>
+      <div id="playerTwoLost" class="hidden"><p>Player one is the winner!</p></div>
+      <a href="reset"><button id="reset">Reset Game</button></a>
+    </div>
+  </div>
+  </div>
+</body>
+</html>

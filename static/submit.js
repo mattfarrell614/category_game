@@ -11,16 +11,16 @@ $( document ).ready(function() {
 				$("#player2list").append(new Option(data.picked2_already[i].toUpperCase()));
 			}
 			$('#player1tries').text(data.playerOneTries);
-			$('#player2tries').text(data.playerOneTries);
+			$('#player2tries').text(data.playerTwoTries);
 			if (data.playerOnesTurn == true){
 				console.log("FIRST")
-				$("#player1country").css({"background-color": "green"});
-				$("#player2country").css({"background-color": "red"});
+				$("#player1country").css({"background-color": "#3CBC8D"});
+				$("#player2country").css({"background-color": "#EF4823"});
 			}
 			if (data.playerTwosTurn == true){
 				console.log("SECOND")
-				$("#player2country").css({"background-color": "green"});
-				$("#player1country").css({"background-color": "red"});
+				$("#player2country").css({"background-color": "#3CBC8D"});
+				$("#player1country").css({"background-color": "#EF4823"});
 			}
 			console.log("Initial get: " + data.playerOnesTurn)
 			console.log("Initial get: " + data.playerTwosTurn)
@@ -31,6 +31,9 @@ $( document ).ready(function() {
 	$(function(){
 		$("#player1form").submit(function(){
 			playerOneAnswer = $("#player1country").val()
+			if (playerOneAnswer == "") {
+				return false
+			}
 			$.ajax({
 				data : {
 					player1Guess : playerOneAnswer
@@ -59,12 +62,12 @@ $( document ).ready(function() {
 						$('#player1tries').text(response.playerOneTries);
 										}
 					if (response.playerTwosTurn == "true"){
-						$("#player1country").css({"background-color": "red"});
-						$("#player2country").css({"background-color": "green"});
+						$("#player1country").css({"background-color": "#EF4823"});
+						$("#player2country").css({"background-color": "#3CBC8D"});
 					}
 					else{
-						$("#player2country").css({"background-color": "green"});
-						$("#player1country").css({"background-color": "red"});
+						$("#player2country").css({"background-color": "#3CBC8D"});
+						$("#player1country").css({"background-color": "#EF4823"});
 					}
 					if (response.playerOnesTurn == "false"){
 						$("#notOneTurn").show()
@@ -81,6 +84,9 @@ $( document ).ready(function() {
 	$(function(){
 		$("#player2form").submit(function(){
 			playerTwoAnswer = $("#player2country").val()
+			if (playerTwoAnswer == "") {
+				return false
+			}
 			$.ajax({
 				data : {
 					player2Guess : playerTwoAnswer
@@ -108,12 +114,12 @@ $( document ).ready(function() {
 						$('#player2tries').text(response.playerOneTries);
 										}
 					if (response.playerOnesTurn == "true"){
-						$("#player1country").css({"background-color": "green"});
-						$("#player2country").css({"background-color": "red"});
+						$("#player1country").css({"background-color": "#3CBC8D"});
+						$("#player2country").css({"background-color": "#EF4823"});
 					}
 					else{
-						$("#player2country").css({"background-color": "red"});
-						$("#player1country").css({"background-color": "green"});
+						$("#player2country").css({"background-color": "#EF4823"});
+						$("#player1country").css({"background-color": "#3CBC8D"});
 					}
 					if (response.playerTwosTurn == "false"){
 						$("#notTwoTurn").show()
